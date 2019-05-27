@@ -74,7 +74,23 @@ public class Main {
         
         System.out.println("Planets");
         for(HeavenlyBody planet : planets) {
-        	System.out.println("\t" + planet.getName());
+        	System.out.println("\t" + planet.getName()); // \t stands for tab
+        }
+        
+        HeavenlyBody body = solarSystem.get("Jupiter");
+        System.out.println("Moons of " + body.getName());
+        for(HeavenlyBody jupiterMoon : body.getSatellites()) {
+        	System.out.println("\t" + jupiterMoon.getName());
+        }
+        
+        Set<HeavenlyBody> moons = new HashSet<>();
+        for(HeavenlyBody planet : planets) {
+        	moons.addAll(planet.getSatellites());
+        }
+        
+        System.out.println("All moons");
+        for(HeavenlyBody moon : moons) {
+        	System.out.println("\t" + moon.getName());
         }
 	}
 
